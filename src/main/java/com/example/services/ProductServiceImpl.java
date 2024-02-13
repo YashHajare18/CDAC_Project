@@ -54,6 +54,18 @@ public class ProductServiceImpl implements IProductService {
 		return productRepo.findByProductType(id);
 	}
 
+	@Override
+	public List<Product> getByLanguage(int id) {
+		// TODO Auto-generated method stub
+		return productRepo.findByProductLanguage(id);
+	}
+
+	@Override
+	public List<Product> getByGenre(int id) {
+		// TODO Auto-generated method stub
+		return productRepo.findByProductGenre(id);
+	}
+
 //	@Override
 //	public void updateById(Product product, long id) {
 //		ProductRepo.updateById(product, id);

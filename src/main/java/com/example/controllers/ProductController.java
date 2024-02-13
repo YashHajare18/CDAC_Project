@@ -46,11 +46,40 @@ public class ProductController {
 		proService.deleteById(pid);
 		
 	 }
+	@PostMapping(value = "/add")
+	 public void addpro(@RequestBody Product product)
+	 {
+		System.out.println("addpro called");
+		proService.addProduct(product);
+	 }
 
 	@GetMapping("/getByType/{id}")
-	public List<ProductDto> getByType(@PathVariable int id) {
+	public List<Product> getByType(@PathVariable int id) {
 		System.out.println("bytype");
 		List<Product> list = proService.getByType(id);
+//		List<ProductDto> sendList = new ArrayList<>();
+//		for (Product obj : list) {
+//			ProductDto newObje = new ProductDto();
+//			newObje.setId(obj.getProductId());
+//			newObje.setLibrary(obj.isLibrary());
+//			newObje.setMinRentDays(obj.getMinRentDays());
+//			newObje.setPrice(obj.getBasePrice());
+//			newObje.setProductName(obj.getProductName());
+//			newObje.setRentable(obj.isRentable());
+//			newObje.setRentPerDay(obj.getRentPerDay());
+//			System.out.println("Is rentable "+obj.isRentable());
+//			sendList.add(newObje);
+//			
+//		}
+//		System.out.println(list);
+		return list;
+        	
+	}
+	
+	@GetMapping("/getByLanguage/{id}")
+	public List<ProductDto> getByLanguage(@PathVariable int id) {
+		System.out.println("bytype");
+		List<Product> list = proService.getByLanguage(id);
 		List<ProductDto> sendList = new ArrayList<>();
 		for (Product obj : list) {
 			ProductDto newObje = new ProductDto();
@@ -70,12 +99,30 @@ public class ProductController {
         	
 	}
 	
-	@PostMapping(value = "/add")
-	 public void addpro(@RequestBody Product product)
-	 {
-		System.out.println("addpro called");
-		proService.addProduct(product);
-	 }
+	@GetMapping("/getByGenre/{id}")
+	public List<ProductDto> getByGenre(@PathVariable int id) {
+		System.out.println("bytype");
+		List<Product> list = proService.getByGenre(id);
+		List<ProductDto> sendList = new ArrayList<>();
+		for (Product obj : list) {
+			ProductDto newObje = new ProductDto();
+			newObje.setId(obj.getProductId());
+			newObje.setLibrary(obj.isLibrary());
+			newObje.setMinRentDays(obj.getMinRentDays());
+			newObje.setPrice(obj.getBasePrice());
+			newObje.setProductName(obj.getProductName());
+			newObje.setRentable(obj.isRentable());
+			newObje.setRentPerDay(obj.getRentPerDay());
+			System.out.println("Is rentable "+obj.isRentable());
+			sendList.add(newObje);
+			
+		}
+		System.out.println(list);
+		return sendList;
+        	
+	}
+	
+	
 	
 
 }

@@ -25,6 +25,12 @@ public interface IProductRepository extends JpaRepository<Product,Integer> {
     
 	@Query(value = "SELECT * FROM Product p WHERE p.type_id = :typeId", nativeQuery = true)
     List<Product> findByProductType(@Param("typeId") int typeId);
+	
+	@Query(value = "SELECT * FROM Product p WHERE p.language_id = :language_id", nativeQuery = true)
+	List<Product> findByProductLanguage(@Param("language_id")int language_id);
+	@Query(value = "SELECT * FROM Product p WHERE p.genre_id =:genre_id", nativeQuery = true)
+	List<Product> findByProductGenre(@Param("genre_id") int genreId);
+
 	//    @Modifying
 //    @Query("UPDATE Product p SET p.productName = :productName, p.productEngName = :productEngName, " +
 //            "p.typeId = :typeId, p.basePrice = :basePrice, p.specialCost = :specialCost, p.offerPrice = :offerPrice, " +
@@ -36,4 +42,6 @@ public interface IProductRepository extends JpaRepository<Product,Integer> {
 //            String productName, String productEngName, ProductType typeId, float basePrice, float specialCost, float offerPrice,
 //            Date offerExpDate, String shortDesc, String longDesc, String ISBN, String author, Publisher publisher,
 //            Language languageId, Genre genreId, boolean isRentable, boolean isLibrary, float rentPerDay, int minRentDays, int productId);
+
+	 
 }

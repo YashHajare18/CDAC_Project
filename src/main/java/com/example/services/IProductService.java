@@ -22,5 +22,7 @@ public interface IProductService {
 	List<Product> getByType(int id);
 	
 	List<Product> getByLanguage(int id);
+	
+	List<Product> getByGenre(int id);
 
 }
